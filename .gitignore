@@ -1,0 +1,6 @@
+### Firebase ###
+.idea
+firebase-debug.log
+**/node_modules/*
+**/.firebaserc
+public/assets/styles/style.css
