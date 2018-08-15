@@ -10,6 +10,20 @@ angular.module('app').controller('GameController', function ($scope) {
     ctrl.paintedCities = [];
     ctrl.remainingTime = '05:00';
 
+    // ctrl.events.startWelcomeLoop = function () {
+    //     let citiesList = ctrl.cities.map(function (city) {
+    //         return city.id
+    //     });
+    //     let paintedCityId = null;
+    //     setInterval(function () {
+    //         if (paintedCityId) {
+    //             // removePaintCity(paintedCityId);
+    //         }
+    //         paintedCityId = citiesList[Math.floor(Math.random()*citiesList.length)];
+    //         paintCity(paintedCityId);
+    //     }, 1000)
+    // };
+
     ctrl.events.startGame = function (value)  {
         ctrl.gameState = 'playing';
         let fiveMinutes = 60 * 5;
