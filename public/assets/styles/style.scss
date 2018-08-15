@@ -1,16 +1,69 @@
-body{
-    background-color: red;
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/bariol_regular-webfont.woff2') format('woff2'),
+    url('../fonts/bariol_regular-webfont.woff') format('woff');
+}
+
+body {
+    font-family: 'montserrat', Helvetica, arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0093ba !important;
+    color: #FFFFFF;
+}
+
+h1.hashtag-title{
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+h4.excerpt{
+    margin-bottom: 40px;
 }
 
 .svg-map {
     max-width: 100%;
-    height: 100%;
+    height: calc(100vh - 130px);
+
+    .fil0 {
+        fill: transparent;
+    }
+    .fil2 {
+        fill: transparent;
+    }
 }
 
 path{
     fill: red;
 }
 
+.ad-container{
+    text-align: center;
+
+    .img-fluid{
+        margin: 10px auto;
+    }
+}
+
+.right-column{
+    display: flex;
+    align-items: center;
+}
+
 .city-item.painted{
     fill: green;
+}
+
+.button-wrapper{
+    margin-top: 30px;
+    width: 100%;
+
+    button.btn-start-game{
+        background-color: #ef5a8d;
+        width: 200px;
+        color: #fff;
+        font-size: 22px;
+    }
 }
