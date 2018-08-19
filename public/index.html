@@ -6,6 +6,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
     <script src="app.js"></script>
+    <script src="es-map/es-map.controller.js"></script>
+    <script src="es-map/es-map.directive.js"></script>
+    <script src="helpers/util.helper.js"></script>
+    <script src="helpers/cities.helper.js"></script>
+    <script src="game.controller.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/styles/style.css">
 </head>
@@ -16,7 +21,7 @@
             <img class="img-fluid center" src="http://via.placeholder.com/728x90" alt="">
         </div>
         <div class="col-sm-5">
-            <div ng-include="'svg-map.html'"></div>
+            <es-map painted-cities="ctrl.paintedCities"></es-map>
         </div>
         <div class="col-sm-7 right-column">
 

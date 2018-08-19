@@ -46,13 +46,19 @@ h4.excerpt{
     fill: #FFF;
     background-color: #AD310B;
     pointer-events:all;
+    cursor: pointer;
 
-    &.painted {
-        fill: rgba(63, 128, 54, 0.56);
+    &.successful-painted {
+        fill: rgb(65, 180, 52);
+    }
+
+    &.hover-painted {
+        fill: #ef5a8de3;
     }
 }
 
 #the-tooltip{
+    display: none;
     position: absolute;
     padding: 3px 10px;
     border-radius: 5px;

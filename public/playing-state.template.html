@@ -3,6 +3,6 @@
     <h4>Digite o nome das cidades</h4>
     <input ng-change="ctrl.events.inputChanged()" ng-model="ctrl.input" type="text">
     <ul>
-        <li ng-repeat="city in ctrl.paintedCities">{{ city }}</li>
+        <li ng-repeat="city in ctrl.paintedCities">{{ city.title }}</li>
     </ul>
 </div>
