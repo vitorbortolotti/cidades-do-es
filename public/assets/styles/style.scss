@@ -27,17 +27,6 @@ h4.excerpt{
 .svg-map {
     max-width: 100%;
     height: calc(100vh - 130px);
-
-    .fil0 {
-        fill: transparent;
-    }
-    .fil2 {
-        fill: transparent;
-    }
-}
-
-path{
-    fill: red;
 }
 
 .ad-container{
@@ -54,11 +43,20 @@ path{
 }
 
 .city-item{
+    fill: #FFF;
     background-color: #AD310B;
+    pointer-events:all;
+
+    &.painted {
+        fill: rgba(63, 128, 54, 0.56);
+    }
 }
 
-.city-item.painted {
-    fill: rgba(63, 128, 54, 0.56);
+#the-tooltip{
+    position: absolute;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background-color: #ef5a8de3;
 }
 
 .button-wrapper{

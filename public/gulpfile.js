@@ -3,8 +3,8 @@ const sass    = require('gulp-sass');
 const argv = require('minimist')(process.argv.slice(2));
 
 const sassPath = {
-    source: './public/assets/styles/style.scss',
-    dest: './public/assets/styles'
+    source: './assets/styles/style.scss',
+    dest: './assets/styles'
 };
 
 gulp.task('resolve', sass_resolve);

@@ -10,20 +10,6 @@ angular.module('app').controller('GameController', function ($scope) {
     ctrl.paintedCities = [];
     ctrl.remainingTime = '05:00';
 
-    // ctrl.events.startWelcomeLoop = function () {
-    //     let citiesList = ctrl.cities.map(function (city) {
-    //         return city.id
-    //     });
-    //     let paintedCityId = null;
-    //     setInterval(function () {
-    //         if (paintedCityId) {
-    //             // removePaintCity(paintedCityId);
-    //         }
-    //         paintedCityId = citiesList[Math.floor(Math.random()*citiesList.length)];
-    //         paintCity(paintedCityId);
-    //     }, 1000)
-    // };
-
     ctrl.events.startGame = function (value)  {
         ctrl.gameState = 'playing';
         let fiveMinutes = 60 * 5;
@@ -39,6 +25,18 @@ angular.module('app').controller('GameController', function ($scope) {
                 ctrl.paintedCities.push(match.title)
             }
         }
+    };
+
+    ctrl.events.hoverEnterCity = function (cityId) {
+        console.log(cityId);
+        paintCity(cityId);
+        showTooltip(cityId);
+    };
+
+    ctrl.events.hoverLeaveCity = function (cityId) {
+        removePaintCity(cityId);
+        removeTooltip(cityId);
+        console.log(cityId);
     };
 
     function startTimer(duration) {
@@ -71,7 +69,7 @@ angular.module('app').controller('GameController', function ($scope) {
     }
 
     function findCityMatch(input) {
-        let match = ctrl.cities.find(x => removerAcentos(x.title).toLowerCase() === removerAcentos(input).toLowerCase());
+        let match = ctrl.cities.find(x => removerAcentos(x.title.toLowerCase()) === removerAcentos(input.toLowerCase()));
         if (match) {
             return match;
         } else {
@@ -84,9 +82,25 @@ angular.module('app').controller('GameController', function ($scope) {
         $el.addClass('painted')
     }
 
+    function showTooltip(id) {
+        let $el = angular.element('#' + id);
+        let $tooltip = angular.element('#the-tooltip');
+        $tooltip.show();
+        const offsetTop = $el.offset().top - 35;
+        // const offsetLeft = $el.offset().left + 35;
+        $tooltip.css('top', offsetTop + 'px');
+        $tooltip.css('left', $el.offset().left + 'px');
+    }
+
     function removePaintCity(id) {
         let $el = angular.element('#' + id);
         $el.removeClass('painted')
+    }
+
+    function removeTooltip(id) {
+        let $el = angular.element('#' + id);
+        let $tooltip = angular.element('#the-tooltip');
+        // $tooltip.hide();
     }
 
     function removerAcentos( newStringComAcento ) {
