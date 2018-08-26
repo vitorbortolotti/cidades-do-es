@@ -10,7 +10,7 @@ function esMap() {
         bindToController: true,
         templateUrl: 'es-map/es-map.template.html',
         scope: {
-            enableHover: '=',
+            revealEnabled: '=',
             paintedCities: '='
         },
     };

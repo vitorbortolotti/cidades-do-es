@@ -20,20 +20,24 @@ function esMapController($scope, CitiesHelper) {
     }, true);
 
     ctrl.events.hoverEnterCity = function (cityId) {
-        console.log(cityId);
-        paintCity(cityId, colorClasses.hoverPaint);
-        showTooltip(cityId);
+        if (ctrl.revealEnabled) {
+            paintCity(cityId, colorClasses.hoverPaint);
+            showTooltip(cityId);
+        }
     };
 
     ctrl.events.hoverLeaveCity = function (cityId) {
-        removePaintCity(cityId, colorClasses.hoverPaint);
-        removeTooltip(cityId);
-        console.log(cityId);
+        if (ctrl.revealEnabled) {
+            removePaintCity(cityId, colorClasses.hoverPaint);
+            removeTooltip(cityId);
+        }
     };
 
     ctrl.events.clickCity = function (cityId) {
-        const url = CitiesHelper.getCityById(cityId).link;
-        window.open(url,'_blank');
+        if (ctrl.revealEnabled) {
+            const url = CitiesHelper.getCityById(cityId).link;
+            window.open(url,'_blank');
+        }
     };
 
     function paintCities(cities, variant) {

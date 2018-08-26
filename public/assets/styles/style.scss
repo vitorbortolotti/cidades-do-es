@@ -42,11 +42,16 @@ h4.excerpt{
     align-items: center;
 }
 
+.reveal-enabled{
+    .city-item{
+        cursor: pointer;
+    }
+}
+
 .city-item{
     fill: #FFF;
     background-color: #AD310B;
     pointer-events:all;
-    cursor: pointer;
 
     &.successful-painted {
         fill: rgb(65, 180, 52);
