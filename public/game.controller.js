@@ -2,17 +2,23 @@ angular
     .module('app')
     .controller('GameController', GameController);
 
-    GameController.$inject = ['$scope', 'UtilHelper', 'CitiesHelper', '$timeout'];
+    GameController.$inject = ['$scope', 'UtilHelper', 'CitiesHelper', '$timeout', '$firebaseArray'];
 
-function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
+function GameController($scope, UtilHelper, CitiesHelper, $timeout, $firebaseArray) {
 
     let ctrl = this;
 
     ctrl.input = null;
     ctrl.gameState = 'welcome';
     ctrl.events = {};
-    ctrl.paintedCities = [];
     ctrl.remainingTime = '05:00';
+    ctrl.gameRecord = {
+        cities: [],
+        log: []
+    };
+    ctrl.models = {
+        gameRuns: $firebaseArray(firebase.database().ref('/gameRuns')),
+    };
 
     ctrl.events.startGame = function (value)  {
         ctrl.gameState = 'playing';
@@ -23,9 +29,9 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
     ctrl.events.inputChanged = function (value)  {
         let match = CitiesHelper.findCityMatch(ctrl.input);
         if (match) {
-            if (ctrl.paintedCities.indexOf(match.title) < 0) {
+            if (ctrl.gameRecord.cities.indexOf(match.title) < 0) {
                 ctrl.input = null;
-                ctrl.paintedCities.push(match);
+                ctrl.gameRecord.cities.push(match);
                 $timeout(function () {
                     $scope.$apply();
                 });
@@ -57,9 +63,12 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         console.log('time is up');
         $scope.$apply(function(){
             ctrl.gameState = 'result';
-            ctrl.gamePoints = ctrl.paintedCities.length;
+            ctrl.gamePoints = ctrl.gameRecord.cities.length;
         });
-
+        const cityIds = ctrl.gameRecord.cities.map((city) => city.id);
+        ctrl.models.gameRuns.$add({ cities: cityIds }).then(() => {
+            console.log('Game data saved');
+        });
     }
 
 }
