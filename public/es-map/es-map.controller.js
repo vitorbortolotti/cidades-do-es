@@ -35,8 +35,9 @@ function esMapController($scope, CitiesHelper) {
 
     ctrl.events.clickCity = function (cityId) {
         if (ctrl.revealEnabled) {
-            const url = CitiesHelper.getCityById(cityId).link;
-            window.open(url,'_blank');
+            const city = CitiesHelper.getCityById(cityId);
+            ga('send', 'event', 'Game', 'click-city', city.title);
+            window.open(city.link,'_blank');
         }
     };
 
