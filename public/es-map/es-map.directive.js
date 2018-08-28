@@ -9,6 +9,7 @@ function esMap() {
         controllerAs: 'ctrl',
         bindToController: true,
         templateUrl: 'es-map/es-map.template.html',
+        transclude: true,
         scope: {
             revealEnabled: '=',
             paintedCities: '='

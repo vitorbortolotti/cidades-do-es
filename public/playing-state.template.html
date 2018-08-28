@@ -1,8 +1,10 @@
 <div class="play-container">
-    <h1 class="hashtag-title">{{ ctrl.remainingTime }}</h1>
+    <h1 class="remaining-time">{{ ctrl.remainingTime }}</h1>
     <h4>Digite o nome das cidades</h4>
-    <input ng-change="ctrl.events.inputChanged()" ng-model="ctrl.input" type="text">
-    <ul>
-        <li ng-repeat="city in ctrl.gameRecord.cities">{{ city.title }}</li>
+    <input class="form-control" ng-change="ctrl.events.inputChanged()" ng-model="ctrl.input" type="text">
+    <ul class="list-group">
+        <li class="list-group-item"
+            ng-repeat="city in ctrl.gameRecord.cities | orderBy:'+':true"
+            ng-class="{ 'list-group-item-success': $index === 0 }">{{ city.title }}</li>
     </ul>
 </div>
