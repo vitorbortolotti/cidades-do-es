@@ -87,12 +87,12 @@ h4.excerpt{
 }
 
 .play-container{
-    height: 100vh;
 
     h1.remaining-time{
         margin-bottom: 40px;
         font-weight: 700;
         margin-top: 40px;
+        font-size: 50px;
     }
 
     input{
@@ -100,7 +100,7 @@ h4.excerpt{
     }
 
     .list-group{
-        height: calc(100vh - 270px);
+        height: 250px;
         overflow-y: auto;
     }
 

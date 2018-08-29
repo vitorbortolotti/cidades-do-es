@@ -21,7 +21,7 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         ctrl.gameState = 'playing';
         ga('send', 'event', 'Game', 'play', 'start-game');
         let fiveMinutes = 60 * 5;
-        startTimer(5);
+        startTimer(5000);
     };
 
     ctrl.events.inputChanged = function (value)  {
