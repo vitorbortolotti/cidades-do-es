@@ -21,7 +21,7 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         ctrl.gameState = 'playing';
         ga('send', 'event', 'Game', 'play', 'start-game');
         let fiveMinutes = 60 * 5;
-        startTimer(5000);
+        startTimer(5);
     };
 
     ctrl.events.inputChanged = function (value)  {
@@ -42,6 +42,16 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         const url = 'https://cidadesdo.es';
         const t = 'Eu consegui acertar 23 municípios!';
         window.open('http://www.facebook.com/sharer.php?quote=' + encodeURIComponent(t) + '&u=' + encodeURIComponent(url),'sharer','toolbar=0,status=0,width=626,height=436');
+    };
+
+    ctrl.events.restartGame = function () {
+        ctrl.input = null;
+        ctrl.gameState = 'welcome';
+        ctrl.remainingTime = '05:00';
+        ctrl.gameRecord = {
+            cities: [],
+            log: []
+        };
     };
 
     function startTimer(duration) {
