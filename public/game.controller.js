@@ -38,6 +38,12 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         }
     };
 
+    ctrl.events.shareResult = function () {
+        const url = 'https://cidadesdo.es';
+        const t = 'Eu consegui acertar 23 municípios!';
+        window.open('http://www.facebook.com/sharer.php?quote=' + encodeURIComponent(t) + '&u=' + encodeURIComponent(url),'sharer','toolbar=0,status=0,width=626,height=436');
+    };
+
     function startTimer(duration) {
         let timer = duration, minutes, seconds;
         let counter = setInterval(function () {

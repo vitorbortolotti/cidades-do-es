@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "angular-tooltips": "^1.2.2",
+    "dt-hamburger-menu": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1",
     "ui-bootstrap4": "^3.0.4"
