@@ -44,6 +44,8 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
 
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
@@ -53,25 +55,38 @@
     <script src="helpers/util.helper.js"></script>
     <script src="helpers/cities.helper.js"></script>
     <script src="game.controller.js"></script>
+    <script src="node_modules/dt-hamburger-menu/src/hamburger-menu.js"></script>
+    <link rel="stylesheet" href="node_modules/dt-hamburger-menu/src/hamburger-menu.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
 <div ng-app="app" ng-controller="GameController as ctrl" class="container" ng-class="ctrl.gameState">
     <div class="row">
-        <!--<div class="col-12 ad-container">-->
-            <!--<img class="img-fluid center" src="http://via.placeholder.com/728x90" alt="">-->
-        <!--</div>-->
-        <div class="col-sm-5 map-container" ng-class="ctrl.gameState">
-            <es-map painted-cities="ctrl.gameRecord.cities" reveal-enabled="ctrl.gameState == 'result'"></es-map>
-        </div>
-        <div class="col-sm-7 right-column">
-            <div class="game-welcome-include" ng-if="ctrl.gameState == 'welcome'" ng-include="'welcome-state.template.html'"></div>
-            <div class="game-playing-include" ng-if="ctrl.gameState == 'playing'" ng-include="'playing-state.template.html'"></div>
-            <div class="game-result-include" ng-if="ctrl.gameState == 'result'"  ng-include="'summary-state.template.html'"></div>
-        </div>
-        <div id="the-tooltip">Nome da cidade</div>
+        <nav class="navbar navbar-expand-lg navbar-dark" ng-class="{ 'blue-bg': ctrl.openMenu }">
+            <button class="navbar-toggler" type="button" ng-click="ctrl.openMenu = !ctrl.openMenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" ng-class="{ 'show': ctrl.openMenu }" id="navbarSupportedContent">
+                <div></div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a ng-click="ctrl.openMenu = false" class="nav-link" ui-sref="home">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a ng-click="ctrl.openMenu = false" class="nav-link disabled">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a ng-click="ctrl.openMenu = false" class="nav-link" ui-sref="about">Sobre</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
+    <main>
+        <ui-view></ui-view>
+    </main>
 </div>
 </body>
 </html>

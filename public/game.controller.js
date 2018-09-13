@@ -52,6 +52,9 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
             cities: [],
             log: []
         };
+        $timeout(function () {
+            $scope.$apply();
+        });
     };
 
     function startTimer(duration) {

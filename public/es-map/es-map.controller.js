@@ -16,7 +16,10 @@ function esMapController($scope, CitiesHelper) {
     ctrl.events = {};
 
     $scope.$watch('ctrl.paintedCities', function (newValue, oldValue) {
-        paintCities(newValue, colorClasses.successfulPaint)
+        paintCities(newValue, colorClasses.successfulPaint);
+        if ( newValue && newValue.length === 0 ) {
+            removeAllPaintedCities();
+        }
     }, true);
 
     ctrl.events.hoverEnterCity = function (cityId) {
@@ -55,6 +58,14 @@ function esMapController($scope, CitiesHelper) {
     function removePaintCity(id, variant) {
         let $el = angular.element('#' + id);
         $el.removeClass(variant)
+    }
+    
+    function removeAllPaintedCities() {
+        let cities = CitiesHelper.getCities();
+        cities.forEach(function (city) {
+            let $el = angular.element('#' + city.id);
+            $el.removeClass(colorClasses.successfulPaint)
+        });
     }
 
     function showTooltip(id) {

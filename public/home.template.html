@@ -1,0 +1,14 @@
+<div class="row">
+    <!--<div class="col-12 ad-container">-->
+    <!--<img class="img-fluid center" src="http://via.placeholder.com/728x90" alt="">-->
+    <!--</div>-->
+    <div class="col-sm-5 map-container" ng-class="ctrl.gameState">
+        <es-map painted-cities="ctrl.gameRecord.cities" reveal-enabled="ctrl.gameState == 'result'"></es-map>
+    </div>
+    <div class="col-sm-7 right-column">
+        <div class="game-welcome-include" ng-if="ctrl.gameState == 'welcome'" ng-include="'welcome-state.template.html'"></div>
+        <div class="game-playing-include" ng-if="ctrl.gameState == 'playing'" ng-include="'playing-state.template.html'"></div>
+        <div class="game-result-include" ng-if="ctrl.gameState == 'result'"  ng-include="'summary-state.template.html'"></div>
+    </div>
+    <div id="the-tooltip">Nome da cidade</div>
+</div>
