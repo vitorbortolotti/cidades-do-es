@@ -21,7 +21,7 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         ctrl.gameState = 'playing';
         ga('send', 'event', 'Game', 'play', 'start-game');
         let fiveMinutes = 60 * 5;
-        startTimer(fiveMinutes);
+        startTimer(5);
     };
 
     ctrl.events.inputChanged = function (value)  {
@@ -39,9 +39,20 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
     };
 
     ctrl.events.shareResult = function () {
-        const url = 'https://cidadesdo.es';
-        const t = 'Eu consegui acertar 23 municípios!';
-        window.open('http://www.facebook.com/sharer.php?quote=' + encodeURIComponent(t) + '&u=' + encodeURIComponent(url),'sharer','toolbar=0,status=0,width=626,height=436');
+        FB.ui({
+            method: 'share_open_graph',
+            action_type: 'og.shares',
+            action_properties: JSON.stringify({
+                object : {
+                    'og:url': 'https://cidadesdo.es/', // your url to share
+                    'og:title': 'Eu consegui lembrar ' + ctrl.gamePoints + ' cidades!',
+                    'og:description': 'Você conhece os 78 municípios do Espírito Santo? O estado pode ser o menor da região sudeste, mas é rico em história e belezas. Que tal tentar acertar os nomes de cada uma das cidades?',
+                    'og:image': 'https://cidadesdo.es/assets/share.png'
+                }
+            })
+        }, function(response){
+            console.log(response);
+        });
     };
 
     ctrl.events.restartGame = function () {

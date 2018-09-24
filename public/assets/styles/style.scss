@@ -64,7 +64,7 @@ h4.excerpt{
 .welcome-container{
 
     @media only screen and (max-width: 768px) {
-        margin: 5px;
+        margin: 60px 5px;
     }
 }
 
@@ -240,6 +240,7 @@ nav.navbar{
     width: 100%;
     z-index: 99999;
     text-align: right;
+    top: 0;
 
     @media only screen and (max-width: 768px) {
         button{
@@ -249,6 +250,16 @@ nav.navbar{
             background-color: #057c9b;
         }
     }
+}
+
+@media only screen and (max-width: 768px) {
+    .blue-bg{
+        background-color: #057c9b;
+    }
+}
+
+main{
+    margin: 0 !important;
 }
 
 .about-container{

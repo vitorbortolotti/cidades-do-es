@@ -14,6 +14,7 @@
     "dt-hamburger-menu": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1",
+    "html2canvas": "^1.0.0-alpha.12",
     "ui-bootstrap4": "^3.0.4"
   }
 }
