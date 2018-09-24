@@ -47,7 +47,7 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
                     'og:url': 'https://cidadesdo.es/', // your url to share
                     'og:title': 'Eu consegui lembrar ' + ctrl.gamePoints + ' cidades!',
                     'og:description': 'Você conhece os 78 municípios do Espírito Santo? O estado pode ser o menor da região sudeste, mas é rico em história e belezas. Que tal tentar acertar os nomes de cada uma das cidades?',
-                    'og:image': 'https://cidadesdo.es/assets/share.png'
+                    'og:image': 'https://cidadesdo.es/assets/share-squared.png'
                 }
             })
         }, function(response){
