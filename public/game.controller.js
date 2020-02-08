@@ -21,7 +21,7 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         ctrl.gameState = 'playing';
         ga('send', 'event', 'Game', 'play', 'start-game');
         let fiveMinutes = 60 * 5;
-        startTimer(fiveMinutes);
+        ctrl.events.startTimer(fiveMinutes);
     };
 
     ctrl.events.inputChanged = function (value)  {
@@ -68,7 +68,7 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
         });
     };
 
-    function startTimer(duration) {
+    ctrl.events.startTimer = function(duration) {
         let timer = duration, minutes, seconds;
         let counter = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
@@ -82,13 +82,13 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
             });
 
             if (--timer < 0) {
-                timeIsUp();
+                ctrl.events.timeIsUp();
                 clearInterval(counter);
             }
         }, 1000);
-    }
+    };
 
-    function timeIsUp() {
+    ctrl.events.timeIsUp = function () {
         console.log('time is up');
         $scope.$apply(function(){
             ctrl.gameState = 'result';
@@ -96,6 +96,6 @@ function GameController($scope, UtilHelper, CitiesHelper, $timeout) {
             ga('send', 'event', 'Game', 'play', 'finish-game', ctrl.gamePoints);
         });
         const cityIds = ctrl.gameRecord.cities.map((city) => city.id);
-    }
+    };
 
 }

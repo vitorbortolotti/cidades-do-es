@@ -18,3 +18,10 @@ angular.module("app").config(function ($stateProvider, $urlRouterProvider, $loca
                 resolve: {}
             })
     });
+
+/**
+ * Hackey function to skip to the end of the game. Can be called from the console.
+ */
+function timeIsUp() {
+    angular.element(document.querySelector('div[ng-app="app"]')).scope().ctrl.events.timeIsUp()
+}
