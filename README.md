@@ -12,7 +12,7 @@ It's not a new idea whatsoever, but it was still fun to have a localized version
 > Please do note that the game is only available in Brazilian Portuguese (`pt-BR`). If you want to see how it works, 
 follow the steps:
 
-- Go to https://cidadesdo.es/
+- Go to https://cidades-do-espirito-santo.firebaseapp.com/
 - Click the pink button "Iniciar"
 - A text input will show up. Try typing "Serra", the city should light up in the map.
 
